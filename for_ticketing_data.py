@@ -9,7 +9,6 @@ data directly into MongoDB.
 
 import urllib2
 import datetime as dt
-import numpy as np
 import json
 from pymongo import MongoClient
 import pymongo
@@ -37,7 +36,7 @@ for line in ticketing_data:
             station_name = line[0]
             if init_time is None:
                 init_time = dt.datetime.strptime(line[2], '%d/%m/%Y %H:%M:%S')
-                end_time = int((end_time - init_time).total_seconds())
+            end_time = int((end_time - init_time).total_seconds())
             i = 1
         in_station = line[0]
         out_station = line[1]
