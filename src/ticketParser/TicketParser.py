@@ -124,7 +124,7 @@ class TicketParser:
                     ins_obj = {
                         'gate': record['gate'],
                         'io': True,
-                        'timestamp': self.map_time(in_time),
+                        'time_stamp': self.map_time(in_time),
                         'station': in_station,
                         'n': number
                     }
@@ -135,7 +135,7 @@ class TicketParser:
                     ins_obj = {
                         'gate': record['gate'],
                         'io': False,
-                        'timestamp': self.map_time(out_time),
+                        'time_stamp': self.map_time(out_time),
                         'station': out_station,
                         'n': number
                     }
