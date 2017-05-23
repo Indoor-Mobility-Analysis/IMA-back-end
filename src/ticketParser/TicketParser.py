@@ -5,8 +5,8 @@ DB = 'mapping'
 ALLCOLLECTION = 'tickets_all'
 SCHEMA = ['in_station', 'out_station', 'in_time', 'out_time', 'gate']
 SCHEMATYPE = ['str', 'str', 'time', 'time', 'int']
-STARTTIME = "01/01/1970 06:30:00"
-ENDTIME = "01/01/1970 08:00:00"
+STARTTIME = "01/01/1900 06:30:00"
+ENDTIME = "01/01/1900 08:00:00"
 STATIONS = ['ADM']
 ALLSTATION = True
 
@@ -125,8 +125,7 @@ class TicketParser:
                         'gate': record['gate'],
                         'io': True,
                         'time_stamp': self.map_time(in_time),
-                        'station': in_station,
-                        'n': number
+                        'station': in_station
                     }
                     collections['tickets_' + in_station].insert(ins_obj)
 
@@ -136,8 +135,7 @@ class TicketParser:
                         'gate': record['gate'],
                         'io': False,
                         'time_stamp': self.map_time(out_time),
-                        'station': out_station,
-                        'n': number
+                        'station': out_station
                     }
                     collections['tickets_' + out_station].insert(ins_obj)
 
