@@ -1,0 +1,10 @@
+*.pyc
+dist
+MANIFEST
+
+.idea
+
+data/
+data
+
+
