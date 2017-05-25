@@ -1,5 +1,5 @@
 """
-This module parses the ticketing data in .txt format, 
+This module parses the ticketing data in .txt format,
 truncates it by a time period.
 
 It provides two functions, one to write the
@@ -24,8 +24,8 @@ ticketing_data = urllib2.urlopen(path).read().split('\n')
 init_time = None
 end_time = dt.datetime.strptime('01/01/1900 08:00:00', '%d/%m/%Y %H:%M:%S')
 
-ticketing_adm = []
-ticketing_all = []
+tickets_adm = []
+tickets_all = []
 i = 0
 for line in ticketing_data:
     adm_entry = {}
@@ -52,9 +52,9 @@ for line in ticketing_data:
         all_entry['out_station'] = out_station
         all_entry['in_time'] = in_time
         all_entry['out_time'] = out_time
-        
+
         adm_entry['gate'] = gate
-        
+
         if line[0] == station_name:
             adm_entry['io'] = True
             adm_entry['timestamp'] = in_time
@@ -65,19 +65,19 @@ for line in ticketing_data:
             adm_entry['timestamp'] = out_time
             all_entry['in_gate'] = 'null'
             all_entry['out_time'] = gate
-            
-        ticketing_adm.append(adm_entry)
-        ticketing_all.append(all_entry)
-        
+
+        tickets_adm.append(adm_entry)
+        tickets_all.append(all_entry)
+
 def output_json():
-    with open('ticketing_adm.json', 'w') as f:
-        json.dump(ticketing_adm, f)
-    with open('ticketing_all.json', 'w') as f:
-        json.dump(ticketing_all, f)
-        
+    with open('tickets_adm.json', 'w') as f:
+        json.dump(tickets_adm, f)
+    with open('tickets_all.json', 'w') as f:
+        json.dump(tickets_all, f)
+
 def insert_into_db():
-    result1 = db.ticketing_adm.insert_many(ticketing_adm)
-    result2 = db.ticketing_all.insert_many(ticketing_all)
+    result1 = db.tickets_adm.insert_many(tickets_adm)
+    result2 = db.tickets_all.insert_many(tickets_all)
     return result1, result2
 
 insert_into_db()
