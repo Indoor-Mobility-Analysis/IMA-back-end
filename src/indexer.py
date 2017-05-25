@@ -6,7 +6,7 @@ DB = 'mapping'
 INDEXFIELDS = {'people_count': ['day'],
                'people_activity': ['time_stamp'],
                'tickets_all': ['in_time', 'out_time'],
-               'tickets_adm': ['time_stamp']}
+               'tickets_ADM': ['time_stamp']}
 
 class Indexer:
     def __init__(self, field=None):
